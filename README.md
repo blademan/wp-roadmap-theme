@@ -1,95 +1,116 @@
-# Roadmap WordPress Theme
+# 🚀 Roadmap WordPress Theme
 
-A modern, professional WordPress theme for showcasing changelogs, development progress, and roadmap planning.
+**Version 1.0.0**
 
-## Features
+A modern, high-performance WordPress theme designed specifically for SaaS products, startups, and developers to showcase their **Changelogs**, **Roadmaps**, and **Release Notes**.
 
-- **Clean, Modern Design**: Built with Tailwind CSS and Inter font
-- **Custom Post Types**: 
-  - Changelogs for tracking releases
-  - Roadmap Items for future planning
-- **Responsive Layout**: Mobile-first design that works on all devices
-- **Dashboard Widget**: Quick access to theme statistics and management
-- **Auto Page Creation**: Automatically creates essential pages on activation
-- **Widget Ready**: Sidebar and footer widget areas
-- **SEO Optimized**: Semantic HTML5 markup
+Built with a "Zero-Config" philosophy, this theme automatically sets up your environment, cleans up the WordPress admin, and populates sample data instantly upon activation.
 
-## Requirements
+---
 
-- WordPress 6.0 or higher
-- **Secure Custom Fields (SCF)** Plugin (Required for dynamic fields)
+## ✨ Key Features
 
-## Installation
+### 🎨 Design & UX
+*   **Global Dark Mode**: A persistent, system-aware dark mode that works across every page. Includes a sticky toggle and smooth CSS transitions.
+*   **Tailwind CSS**: Styled with utility-first CSS for rapid UI development and easy customization.
+*   **Responsive**: Mobile-first architecture using the Inter font family for maximum readability.
 
-1. **Install Plugin**: Go to Plugins > Add New, search for "Secure Custom Fields" and install/activate it.
-2. **Upload Theme**: Upload the `roadmap.zip` file via Appearance > Themes > Add New > Upload Theme.
-3. **Activate**: Activate the theme.
-4. **Setup**: The theme will automatically:
-   - Create a "Home" page and set it as the Front Page.
-   - Create a "Thank You" page.
-   - Register the necessary Custom Post Types (Changelogs, Roadmap).
+### 🛠️ Architecture
+*   **Automated Setup**: Instantly creates "Home", "Thank You" pages, and sets the reading settings on activation.
+*   **Smart Seeding**: Automatically populates your site with a sample Changelog (v1.0.13) and Roadmap items so you never start with a blank screen.
+*   **Clean Admin**: Aggressively cleans the WordPress Dashboard by removing:
+    *   "Posts" (Blog)
+    *   "Comments"
+    *   "Media Library"
+    *   Unused Dashboard Widgets
+    *   Admin Bar Bloat
+*   **No Gutenberg**: Disables the Block Editor globally to ensure data integrity via structured Custom Fields.
 
-## Customization
+### 🧩 Dynamic Content
+*   **Changelog CPT**: specialized post type for releases with Version, Date, Enhancements, and Bugs.
+*   **Roadmap CPT**: Kanban-style cards for future feature planning.
+*   **Secure Custom Fields Integration**: leveraging the SCF plugin for robust data management.
 
-### Brand Colors
-The theme uses `#0066cc` as the primary brand color. You can customize this in:
-- `style.css` (CSS variables)
-- `front-page.php` (inline styles)
+---
 
-### Custom Post Types
-- **Changelogs**: Manage version releases and updates
-- **Roadmap Items**: Plan and display future features
+## 📋 Requirements
 
-### Widget Areas
-- **Sidebar**: Main sidebar widget area
-- **Footer**: Footer widget area
+*   **WordPress Core**: 6.0 or higher.
+*   **PHP**: 7.4 or higher.
+*   **Plugin**: **[Secure Custom Fields](https://wordpress.org/plugins/secure-custom-fields/)** (Required).
+    *   *Note: The theme relies on this plugin for all dynamic data. Please install it BEFORE activating the theme.*
 
-## Development
+---
 
-### File Structure
-```
+## 🚀 Installation
+
+### Option 1: Fresh Installation (Recommended)
+1.  **Install Plugin**: Go to `Plugins > Add New` and install/activate **Secure Custom Fields**.
+2.  **Upload Theme**: Go to `Appearance > Themes > Add New > Upload` and upload the `roadmap.zip`.
+3.  **Activate**: Click **Activate**.
+4.  **Done!**: The theme will automatically:
+    *   Create your pages.
+    *   Seed sample content.
+    *   Redirect you to the clean dashboard.
+
+### Option 2: Updating/Existing Site
+*   Upload the theme folder to `/wp-content/themes/roadmap`.
+*   Ensure the SCF plugin is active.
+*   If you want to reset/re-seed content, you can use the hidden seeder tool if enabled in `inc/changelog-seeder.php`.
+
+---
+
+## 📂 Project Structure
+
+```text
 roadmap/
-├── assets/
-│   ├── css/
-│   ├── js/
-│   │   └── main.js
-│   └── images/
-├── inc/
-├── template-parts/
-├── functions.php
-├── style.css
-├── header.php
-├── footer.php
-├── index.php
-├── front-page.php
-└── screenshot.png
+├── assets/                  # Compiled assets
+│   ├── js/main.js          # Dark mode logic & UI interactions
+│   └── css/                # Styles
+├── inc/                     # Core Functionality
+│   ├── acf-fields.php      # Custom Field Definitions (PHP)
+│   ├── admin-cleanup.php   # Admin UI cleaning & hardening
+│   ├── changelog-seeder.php # Auto-content generator
+│   └── smtp-config.php     # Email configuration
+├── template-parts/          # Reusable UI components
+├── front-page.php           # The main App Dashboard / Home
+├── archive-changelog.php    # Version History List
+├── functions.php            # Theme bootloader
+└── style.css                # Theme metadata
 ```
 
-### Technologies Used
-- Tailwind CSS (CDN)
-- Google Fonts (Inter)
-- Vanilla JavaScript
-- WordPress 6.0+
+---
 
-## Future Enhancements
+## 🎨 Customization
 
-Following the HTML to WordPress Conversion Workflow, future phases will include:
+### Changing Brand Colors
+The primary brand color is **#0066cc** (DesigninDC Blue).
+To change it, update the `tailwind.config` object in `functions.php`:
 
-- **Phase 3**: ACF integration for dynamic content management
-- **Phase 4**: Template parts for reusable components
-- **Phase 5**: Form handling, SEO schema, and security hardening
-- **Phase 6**: White labeling and admin customization
+```php
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                "ddc-blue": "#YOUR_HEX_CODE",
+            }
+        }
+    }
+}
+```
 
-## Support
+### Adding New Fields
+Edit `inc/acf-fields.php` to add new repeater fields or text inputs to the Changelog or Roadmap post types.
 
-For support and customization requests, contact DesigninDC.
+---
 
-## License
+## 🤖 AI Workflow
 
-This theme is licensed under the GPL v2 or later.
+This theme follows the **AI WordPress Blueprint** workflow found in `.agent/workflows/ai-wordpress-blueprint.md`. It is designed to be maintained and expanded by AI agents or developers following strict strict modular patterns.
 
-## Credits
+---
 
-- Design: DesigninDC
-- Tailwind CSS: https://tailwindcss.com
-- Google Fonts: https://fonts.google.com
+## 📝 License
+
+Licensed under the GPL v2 or later.
+Designed by **DesigninDC**.
